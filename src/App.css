@@ -1,0 +1,116 @@
+:root {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --primary: #3b82f6;
+  --text: #ffffff;
+  --text-dim: #a1a1aa;
+}
+
+body { margin: 0; background: var(--bg); color: var(--text); font-family: sans-serif; overflow: hidden; user-select: none; }
+
+.app-container { display: flex; flex-direction: column; height: 100vh; border: 1px solid #333; border-radius: 12px; overflow: hidden; }
+
+/* Title Bar */
+.title-bar { background: var(--surface); height: 32px; display: flex; justify-content: space-between; align-items: center; padding: 0 10px; -webkit-app-region: drag; }
+.title-drag-area { display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; } .yellow { background: #ffbd2e; }
+.title-text { font-size: 0.8rem; color: var(--text-dim); font-weight: 600; margin-left: 10px; }
+.nav-btn { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 0.9rem; -webkit-app-region: no-drag; }
+.nav-btn:hover { color: white; }
+.nav-btn.close:hover { color: #ff5f56; }
+
+/* Settings Screen */
+.settings-screen { padding: 40px; text-align: center; }
+.key-input { width: 90%; padding: 10px; background: #2d2d2d; border: 1px solid #444; color: white; border-radius: 6px; margin: 20px 0; }
+.save-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+.tiny-text { font-size: 0.7rem; color: #555; margin-top: 10px; }
+
+/* Main UI */
+.main-content { padding: 20px; display: flex; flex-direction: column; height: 100%; }
+.transcript-area { flex-grow: 1; background: #1a1a1a; padding: 15px; border-radius: 8px; font-size: 1.1rem; line-height: 1.5; color: #eee; margin-bottom: 10px; overflow-y: auto; white-space: pre-wrap; }
+.placeholder { color: #555; font-style: italic; }
+.status-bar { height: 20px; font-size: 0.8rem; color: var(--primary); display: flex; justify-content: center; align-items: center; gap: 6px; margin-bottom: 15px; }
+
+.controls { display: flex; justify-content: center; align-items: center; gap: 20px; padding-bottom: 10px; }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--surface); color: var(--text-dim); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.icon-btn:hover { background: #333; color: white; }
+.icon-btn.primary { background: var(--primary); color: white; }
+
+.mic-btn { width: 70px; height: 70px; border-radius: 50%; background: var(--primary); color: white; font-size: 1.5rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+.mic-btn.recording { background: #ef4444; transform: scale(0.95); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+.pulse-dot { width: 6px; height: 6px; background: #ef4444; border-radius: 50%; animation: pulse 1s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+
+.transcript-container {
+  position: relative; /* Needed for the copy button overlay */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.copy-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(45, 45, 45, 0.8);
+  border: 1px solid #444;
+  color: #ccc;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.copy-overlay:hover {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.tiny-link { color: #3b82f6; text-decoration: none; font-size: 0.8rem; }
+.tiny-link:hover { text-decoration: underline; }
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link-btn:hover {
+  color: #60a5fa;
+}
+
+
+
+.remove-btn {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #ef4444; 
+  color: #ef4444;            
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  width: 100%;               
+  opacity: 0.8;
+}
+
+.remove-btn:hover {
+  background: rgba(239, 68, 68, 0.1); 
+  opacity: 1;
+}
